@@ -9,3 +9,5 @@ Here is another message
 [click here for google](http://www.google.com)
 
 ### [sharry's blog](http://sharrytong.wordpress.com) 
+
+[link to week1 assignments page](https://github.com/sharry4/cim640/tree/master/week1)
