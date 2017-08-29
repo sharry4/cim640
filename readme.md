@@ -1,15 +1,12 @@
 # CIM640
 
-##  This is smaller
+# Sharry's Repository for Class CIM640
 
-###### This is the smallest
+This is Sharry's repository is for class CIM640. Everything in this repository will be related with the class, including materials, exercises and projects.
 
-Here is another message
+### [sharry's process blog](http://sharrytong.wordpress.com) 
 
-[click here for google](http://www.google.com)
+### More About Me
 
-### [sharry's blog](http://sharrytong.wordpress.com) 
-
-[link to week1 assignments page](https://github.com/sharry4/cim640/tree/master/week1)
-
+I love dogs
 ![dog image](https://www.bluecross.org.uk/sites/default/files/assets/images/20311lpr.jpg)
