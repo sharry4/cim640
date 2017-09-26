@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Rectangle Perimeter Calculator</title>
+
+    <style>
+        /* Enter CSS below */
+    </style>
+
+ </head>
+
+
+<body>
+    
+    <!-- This is a HTML comment -->
+
+    <h1>Rectangle Perimeter Calculator</h1>
+
+    <p><i>This is a calculator for perimeter of a rectangle</i></p>
+    
+    <form action="">
+        <lable for="width">Enter the width of the rectangle:</lable>
+        <input name="width" type="text" id="width"> 
+        <br><br>
+        <lable for="height">Enter the height of the rectangle:</lable>
+        <input name="height" type="text" id="height">
+        <br><br>
+        
+        <button type="button" id="pbutton">Enter width and height</button>
+        
+    </form>
+    
+    <div id="output"></div>
+    
+   
+
+    <script>
+        
+        function perimeter() {
+            var width = document.getElementById("width").value;
+            console.log("width: " + width);
+            
+            var height = document.getElementById("height").value;
+            console.log("height: " + height);
+            
+            var rectangulePerimeter = (parseInt(width)+parseInt(height))*2;
+            console.log("perimeter: " + rectangulePerimeter);
+            
+            var message = "The perimeter of the rectanle is: " + rectangulePerimeter;
+            console.log(message);
+            
+            var outputText = document.getElementById("output");
+            outputText.innerHTML = message;
+            
+            
+        }      
+        
+        var getButton = document.getElementById("pbutton");
+        getButton.addEventListener("click", perimeter);
+        
+    </script>
+
+</body>
+
+</html>
