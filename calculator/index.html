@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Temperature Calculator</title>
+
+    <style>
+        /* Enter CSS below */
+    </style>
+
+ </head>
+
+
+<body>
+    
+    <!-- This is a HTML comment -->
+
+    <h1>Temperature Calculator</h1>
+
+    <p><i>This is a calculator for converting Fahrenheit to Celsius</i></p>
+    
+    <form action="">
+        <label for="fahrenheit">Enter temperature in Fahrenheit (°F):</label>
+        <input type="text" name="fahrenheit" id="fahrenheit">
+        <br><br>
+        <button type="button" id="fButton">Enter Temperature</button>
+        
+        
+    </form><br>
+    
+    <div id="output"></div>
+    
+    
+    
+   
+
+    <script>
+        
+        function celsiusConversion(){
+            var temperatureInFehrenheit = document.getElementById("fahrenheit").value;
+            console.log("Fahrenheit temperature: " + temperatureInFehrenheit);
+            
+            var temperatureInCelsius = (parseInt(temperatureInFehrenheit)-32)/1.8;
+            console.log(temperatureInCelsius);
+
+            CelsiusTemperature = Math.round(temperatureInCelsius);
+            console.log(CelsiusTemperature);
+            
+            var message = "This temperature would be: " + CelsiusTemperature + " Celsius (°C)";
+            console.log(message);
+            
+            var outputText = document.getElementById("output");
+            outputText.innerHTML = message;
+           
+        }
+        
+        
+        var getButton = document.getElementById("fButton");
+        getButton.addEventListener("click", celsiusConversion);        
+        
+    </script>
+
+</body>
+
+</html>
