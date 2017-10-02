@@ -6,6 +6,34 @@
 
     <style>
         /* Enter CSS below */
+        
+        @import url(http://fonts.googleapis.com/css?family=Lato:300,700);
+        @import url(http://fonts.googleapis.com/css?family=Roboto);
+
+        
+        h1 {
+            font-family: "lato";
+            color: cadetblue;
+            display: inline;
+        }
+        
+    
+        p {
+            color: gray; 
+        }
+       
+        form {
+            font-family: "Roboto";
+        }
+        
+        
+        button {
+            background-color: darkseagreen;
+            color: white; /*rgb(97, 221, 251);*/
+            border: none;
+           
+        }
+        
     </style>
 
  </head>
@@ -17,7 +45,7 @@
 
     <h1>Rectangle Perimeter Calculator</h1>
 
-    <p><i>This is a calculator for perimeter of a rectangle</i></p>
+    <p><i>This is a calculator for the perimeter of a rectangle</i></p>
     
     <form action="">
         <lable for="width">Enter the width of the rectangle:</lable>
@@ -26,6 +54,9 @@
         <lable for="height">Enter the height of the rectangle:</lable>
         <input name="height" type="text" id="height">
         <br><br>
+        
+        <img src="img/rectangle.png" alt="rectangle" width="400px;">
+        <br>
         
         <button type="button" id="pbutton">Enter width and height</button>
         
