@@ -36,7 +36,7 @@ function setup() {
 
 function draw() {
     
-    background("#999999");
+    background(249,214,153);
     
     posX = mouseX;
     posY = mouseY;
