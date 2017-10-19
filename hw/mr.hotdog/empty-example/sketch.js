@@ -6,9 +6,10 @@ var arcH = 0;
 var eyeW = 0;
 
 
+
 function setup() {
     createCanvas(1000,500);
-    background("#999999");
+    
     
     posX = width/2;
     posY = height/2;
@@ -17,10 +18,16 @@ function setup() {
     arcH = 40;
     
     eyeW = 18;
+    
+    
+ 
 
 }
 
 function draw() {
+    
+    background("#999999");
+    
     stroke(0);
     strokeWeight(1);
     fill(231,174,0);
@@ -37,10 +44,12 @@ function draw() {
     noFill();
     stroke(255,239,44);
     strokeWeight(5);
-    arc(posX-112.5,posY,arcW,arcH, PI, TWO_PI);
-    arc(posX-37.5,posY,arcW,arcH, 0, PI);
-    arc(posX+37.5,posY,arcW,arcH, PI, TWO_PI);
-    arc(posX+112.5,posY,arcW,arcH, 0, PI);
+    bezier(posX-150, posY, posX-112.5, posY-90, posX-37.5, posY+90, posX, posY);
+    bezier(posX, posY, posX+37.5, posY-90, posX+112.5, posY+90, posX+150, posY);
+//    arc(posX-112.5,posY,arcW,arcH, PI, TWO_PI);
+//    arc(posX-37.5,posY,arcW,arcH, 0, PI);
+//    arc(posX+37.5,posY,arcW,arcH, PI, TWO_PI);
+//    arc(posX+112.5,posY,arcW,arcH, 0, PI);
     
     stroke("black");
     arc(posX,posY+50,arcW,arcH+20, 0+QUARTER_PI, PI-QUARTER_PI);
@@ -49,3 +58,4 @@ function draw() {
     arc(posX+40,posY-105,arcW+5,arcH+20, PI, TWO_PI);
     arc(posX-40,posY-105,arcW+5,arcH+20, PI, TWO_PI);
 }
+
