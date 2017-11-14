@@ -13,5 +13,5 @@ I will create a game with a little man collecting gold coins. Within the game, t
 
 ## 3. Bubble blast game
 A game where the user need to click on bubbles to break it to save a person been trapped by bubbles.
-
+![bubble blast example](img/bubble-blast.jpg)
 
