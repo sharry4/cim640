@@ -12,6 +12,6 @@ I will create a game with a little man collecting gold coins. Within the game, t
 ![catch gold coin example](https://drive.google.com/file/d/1Vo9Gq8NJWx8VlNDLSeTYaZK5aY9FYhko/view?usp=sharing)
 
 ## 3. Bubble blast game
-A game where the user need to click on bubbles to break it to save a person.
+A game where the user need to click on bubbles to break it to save a person been trapped by bubbles.
 
 
