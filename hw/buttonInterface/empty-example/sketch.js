@@ -3,6 +3,7 @@ var brushSize = 10;
 var rColor = 0;
 var gColor = 0;
 var bColor = 0;
+var bShape = false;
 
 
 function setup() {
@@ -20,12 +21,20 @@ function draw() {
     
     noStroke();
     fill(rColor, gColor, bColor);
-    ellipse(mouseX, mouseY, brushSize, brushSize);
+    
+    if(bShape == false ){
+        ellipse(mouseX, mouseY, brushSize, brushSize);
+        }
+    
+    if(bShape == true){
+       triangle(mouseX, mouseY, mouseX + brushSize, mouseY, mouseX + brushSize/2, mouseY - brushSize);
+       }
 
+    fill(50);
     text("Brush size +", 18, 390);
     text("Brush size -", 118, 390);
     text("Random color", 218, 390);
-    text("Reset to black", 318, 390);
+    text("Change shape", 318, 390);
     
     interfaceItems[0].check();
     interfaceItems[0].display();
@@ -66,9 +75,10 @@ function mousePressed() {
     
     if (interfaceItems[3].check() == true) {
         console.log("pressed beige button");
-        rColor = 0;
-        gColor = 0;
-        bColor = 0;
+        bShape = true;
+//        rColor = 0;
+//        gColor = 0;
+//        bColor = 0;
     }
     
 }
