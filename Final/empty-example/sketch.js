@@ -1,6 +1,8 @@
 var bgImage;
 var posX = 400;
 var posY = 300;
+
+var keywaspressed = false;
 //var body, buttons, buttons1, eyes, face, glasses, hat, nose, ribbon;
 //var imgX = -50;
 //var imgY = -50;
@@ -22,22 +24,12 @@ var numberBubbles = 30;
 
 var b = [];
 
-var soundFile;
 
 
 //var multiBubble = [];
 
 function preload() {
     bgImage = loadImage("assets/background.jpg");
-    //    body = loadImage("assets/body.png");
-    //    buttons = loadImage("assets/buttons.png");
-    //    buttons1 = loadImage("assets/buttons1.png");
-    //    eyes = loadImage("assets/eyes.png");
-    //    face = loadImage("assets/face.png");
-    //    glasses = loadImage("assets/glasses.png");
-    //    hat = loadImage("assets/hat.png");
-    //    nose = loadImage("assets/nose.png");
-    //    ribbon = loadImage("assets/ribbon.png");
 
     //    
     //    image(body, 675, 520, 136, 138);
@@ -49,8 +41,6 @@ function preload() {
     //    image(nose, 675, 445, 21, 32);
     //    image(ribbon, 675, 495, 79, 52);
     //   
-    
-    soundFile = loadSound('assets/CowMoo.mp3');
 
     gameObjects.push({
         x: -50,
@@ -64,7 +54,9 @@ function preload() {
         distance: 0,
         overlay: false,
         img: loadImage("assets/body.png"),
-        sound: loadSound("assets/body.m4a")
+        sound: loadSound("assets/body.m4a"),
+        playSound: false
+
     });
 
     gameObjects.push({
@@ -79,7 +71,9 @@ function preload() {
         distance: 0,
         overlay: false,
         img: loadImage("assets/buttons.png"),
-        sound: loadSound("assets/buttons.m4a")
+        sound: loadSound("assets/buttons.m4a"),
+        playSound: false
+
     });
 
     gameObjects.push({
@@ -94,7 +88,9 @@ function preload() {
         distance: 0,
         overlay: false,
         img: loadImage("assets/face.png"),
-        sound: loadSound("assets/face.m4a")
+        sound: loadSound("assets/face.m4a"),
+        playSound: false
+
     });
 
     gameObjects.push({
@@ -109,7 +105,9 @@ function preload() {
         distance: 0,
         overlay: false,
         img: loadImage("assets/eyes.png"),
-        sound: loadSound("assets/eyes.m4a")
+        sound: loadSound("assets/eyes.m4a"),
+        playSound: false
+
     });
 
     gameObjects.push({
@@ -124,7 +122,9 @@ function preload() {
         distance: 0,
         overlay: false,
         img: loadImage("assets/glasses.png"),
-        sound: loadSound("assets/glasses.m4a")
+        sound: loadSound("assets/glasses.m4a"),
+        playSound: false
+
     });
 
     gameObjects.push({
@@ -139,7 +139,9 @@ function preload() {
         distance: 0,
         overlay: false,
         img: loadImage("assets/hat.png"),
-        sound: loadSound("assets/hat.m4a")
+        sound: loadSound("assets/hat.m4a"),
+        playSound: false
+
     });
 
     gameObjects.push({
@@ -154,7 +156,9 @@ function preload() {
         distance: 0,
         overlay: false,
         img: loadImage("assets/nose.png"),
-        sound: loadSound("assets/nose.m4a")
+        sound: loadSound("assets/nose.m4a"),
+        playSound: false
+
     });
 
     gameObjects.push({
@@ -169,7 +173,8 @@ function preload() {
         distance: 0,
         overlay: false,
         img: loadImage("assets/ribbon.png"),
-        sound: loadSound("assets/ribbon.m4a")
+        sound: loadSound("assets/ribbon.m4a"),
+        playSound: false
     });
 
 }
@@ -193,9 +198,12 @@ function setup() {
 }
 
 function draw() {
+
     background(0);
     imageMode(CENTER);
     image(bgImage, posX, posY, 2700, 1800);
+
+
 
     for (var g = 0; g < b.length; g++) {
         b[g].move();
@@ -205,18 +213,9 @@ function draw() {
 
     noStroke();
 
-    //    textSize(30);
-    //    text("You are part of a snowman. Press arrow", 100, 200);
-    //    text("key on your key board to collect your body parts", 100, 230);
-    //    
-
 
     fill(127, 100);
     rect(550, 300, 300, 700);
-    
-    
-    soundFile.setVolume(1);
-    soundFile.play();
 
 
     for (var i = 0; i < gameObjects.length; i++) {
@@ -230,12 +229,25 @@ function draw() {
 
         if (gameObjects[i].overlay == true) {
             image(gameObjects[i].img, gameObjects[i].showX, gameObjects[i].showY, gameObjects[i].sizeW, gameObjects[i].sizeH);
-            gameObjects[i].sound.play();
+
+            if (gameObjects[i].playSound == false) {
+                gameObjects[i].sound.play();
+                gameObjects[i].playSound = true;
+            }
+
         }
     }
 
-    fill(240);
+    fill(230);
     ellipse(400, 300, 20, 20);
+
+    if (keywaspressed == false) {
+        textSize(30);
+        textFont("Arial");
+        text("You are part of a snowman. Press arrow", 90, 200);
+        text("key on your key board to collect your body parts", 90, 230);
+    }
+
 
 
 
@@ -268,11 +280,20 @@ function draw() {
     //            multiBubble[i].moveY();
     //        }
 
+
+    console.log("posY: " + posY);
 }
 
 function keyPressed() {
+    keywaspressed = true;
     if (keyCode === LEFT_ARROW) {
-        posX = posX + 20;
+
+        if (posX < 1340) {
+            posX = posX + 20;
+
+        } else {
+            posX = posX;
+        }
         //        imgX = imgX + 10;
 
         for (var i = 0; i < gameObjects.length; i++) {
@@ -281,7 +302,13 @@ function keyPressed() {
 
 
     } else if (keyCode === RIGHT_ARROW) {
-        posX = posX - 20;
+
+        if (posX > -540) {
+            posX = posX - 20;
+        } else {
+            posX = posX;
+        }
+
         //        imgX = imgX - 10;
 
         for (var i = 0; i < gameObjects.length; i++) {
@@ -289,19 +316,37 @@ function keyPressed() {
         }
 
     } else if (keyCode === UP_ARROW) {
-        posY = posY + 20;
+
+        if (posY < 900) {
+            posY = posY + 20;
+
+        } else {
+            posY = posY;
+        }
+
+
         //        imgY = imgY + 10;
 
         for (var i = 0; i < gameObjects.length; i++) {
             gameObjects[i].y = gameObjects[i].y + 20;
+
         }
 
     } else if (keyCode === DOWN_ARROW) {
-        posY = posY - 20;
+
+        if (posY > -300) {
+            posY = posY - 20;
+
+        } else {
+            posY = posY;
+        }
+
+
         //        imgY = imgY - 10;
 
         for (var i = 0; i < gameObjects.length; i++) {
             gameObjects[i].y = gameObjects[i].y - 20;
+
         }
     }
 
