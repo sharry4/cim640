@@ -53,6 +53,7 @@ function preload() {
         sizeH: 138,
         distance: 0,
         overlay: false,
+        pickedUp: false,
         img: loadImage("assets/body.png"),
         sound: loadSound("assets/body.m4a"),
         playSound: false
@@ -70,6 +71,7 @@ function preload() {
         sizeH: 76,
         distance: 0,
         overlay: false,
+        pickedUp: false,
         img: loadImage("assets/buttons.png"),
         sound: loadSound("assets/buttons.m4a"),
         playSound: false
@@ -87,6 +89,7 @@ function preload() {
         sizeH: 135,
         distance: 0,
         overlay: false,
+        pickedUp: false,
         img: loadImage("assets/face.png"),
         sound: loadSound("assets/face.m4a"),
         playSound: false
@@ -104,6 +107,7 @@ function preload() {
         sizeH: 26,
         distance: 0,
         overlay: false,
+        pickedUp: false,
         img: loadImage("assets/eyes.png"),
         sound: loadSound("assets/eyes.m4a"),
         playSound: false
@@ -121,6 +125,7 @@ function preload() {
         sizeH: 55,
         distance: 0,
         overlay: false,
+        pickedUp: false,
         img: loadImage("assets/glasses.png"),
         sound: loadSound("assets/glasses.m4a"),
         playSound: false
@@ -138,6 +143,7 @@ function preload() {
         sizeH: 98,
         distance: 0,
         overlay: false,
+        pickedUp: false,
         img: loadImage("assets/hat.png"),
         sound: loadSound("assets/hat.m4a"),
         playSound: false
@@ -155,6 +161,7 @@ function preload() {
         sizeH: 32,
         distance: 0,
         overlay: false,
+        pickedUp: false,
         img: loadImage("assets/nose.png"),
         sound: loadSound("assets/nose.m4a"),
         playSound: false
@@ -172,6 +179,7 @@ function preload() {
         sizeH: 52,
         distance: 0,
         overlay: false,
+        pickedUp: false,
         img: loadImage("assets/ribbon.png"),
         sound: loadSound("assets/ribbon.m4a"),
         playSound: false
@@ -215,19 +223,24 @@ function draw() {
 
 
     for (var i = 0; i < gameObjects.length; i++) {
+        
+        if(gameObjects[i].pickedUp == false){
+            image(gameObjects[i].img, gameObjects[i].x + gameObjects[i].offsetX, gameObjects[i].y + gameObjects[i].offsetY, gameObjects[i].sizeW, gameObjects[i].sizeH);      
+           } 
     
-        image(gameObjects[i].img, gameObjects[i].x + gameObjects[i].offsetX, gameObjects[i].y + gameObjects[i].offsetY, gameObjects[i].sizeW, gameObjects[i].sizeH);
-
+    
         var curDist = dist(gameObjects[i].x + gameObjects[i].offsetX, gameObjects[i].y + gameObjects[i].offsetY, 400, 300);
         
         if (curDist <= 20) {
             gameObjects[i].overlay = true;
+            gameObjects[i].pickedUp = true;
         }
+        
+        
     }
     
     for (var i = 0; i < gameObjects.length; i++) {
         
-
         if (gameObjects[i].overlay == true) {
             image(gameObjects[i].img, gameObjects[i].showX, gameObjects[i].showY, gameObjects[i].sizeW, gameObjects[i].sizeH);
 
@@ -238,6 +251,8 @@ function draw() {
 
         }
     }
+    
+    
     
     
 
