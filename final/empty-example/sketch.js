@@ -215,13 +215,18 @@ function draw() {
 
 
     for (var i = 0; i < gameObjects.length; i++) {
+    
         image(gameObjects[i].img, gameObjects[i].x + gameObjects[i].offsetX, gameObjects[i].y + gameObjects[i].offsetY, gameObjects[i].sizeW, gameObjects[i].sizeH);
 
         var curDist = dist(gameObjects[i].x + gameObjects[i].offsetX, gameObjects[i].y + gameObjects[i].offsetY, 400, 300);
-
+        
         if (curDist <= 20) {
             gameObjects[i].overlay = true;
         }
+    }
+    
+    for (var i = 0; i < gameObjects.length; i++) {
+        
 
         if (gameObjects[i].overlay == true) {
             image(gameObjects[i].img, gameObjects[i].showX, gameObjects[i].showY, gameObjects[i].sizeW, gameObjects[i].sizeH);
@@ -233,6 +238,8 @@ function draw() {
 
         }
     }
+    
+    
 
     fill(230);
     ellipse(400, 300, 20, 20);
