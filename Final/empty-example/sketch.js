@@ -182,10 +182,6 @@ function preload() {
 function setup() {
     createCanvas(800, 600);
 
-    //        for (var i = 0; i < 20; i++) {
-    //            var bubbleC = color(255);
-    //            multiBubble.push(new bubble(random(0, width), 0, random(1, 10)));
-    //        }
 
     for (var g = 0; g < numberBubbles; g++) {
         b.push(new Bubble());
@@ -271,14 +267,6 @@ function draw() {
     //    image(ribbon, 675, 495, 79, 52);
 
 
-
-
-
-
-    //        for (var i = 0; i < multiBubble.length; i++) {
-    //            multiBubble[i].display();
-    //            multiBubble[i].moveY();
-    //        }
 
 
     console.log("posY: " + posY);
@@ -377,19 +365,3 @@ Bubble.prototype.draw = function () {
 };
 
 
-//function bubble(tempX, tempY, tempDiameter) {
-//    this.x = tempX;
-//    this.y = tempY;
-//    this.diameter = tempDiameter;
-//
-//    this.display = function () {
-//        fill(255);
-//        noStroke();
-//        ellipse(this.x, this.y, this.diameter, this.diameter);
-//    }
-//    
-//    this.moveY = function () {
-//        this.y++;
-//    }
-//
-//}
