@@ -196,9 +196,6 @@ function setup() {
 
     }
 
-
-
-
 }
 
 function draw() {
@@ -289,9 +286,6 @@ function draw() {
     //    image(ribbon, 675, 495, 79, 52);
 
 
-
-
-    console.log("posY: " + posY);
 }
 
 function keyPressed() {
