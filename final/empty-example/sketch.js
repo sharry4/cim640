@@ -27,9 +27,7 @@ var bgMusic;
 //
 
 
-var snowman = {
-
-};
+var snowman = {};
 
 //    "body": {},
 //    "button":{},
