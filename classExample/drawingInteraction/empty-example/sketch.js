@@ -60,7 +60,8 @@ function draw() {
     centerX = mouseX;
     centerY = mouseY;
     fill(255)
-    strokeWeight(1);
+    stroke
+    Weight(1);
 
     //face
     ellipse(centerX, centerY, 100, 100);
