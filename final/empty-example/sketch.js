@@ -14,13 +14,14 @@ var b = [];
 var collected = 0;
 
 
-var soundFiles = [];
+//var soundFiles = [];
 
 var bgMusic;
 
+var snow;
 
 
-var snowman = {};
+//var snowman = {};
 
 //
 //snowman["body"] = {};
@@ -69,8 +70,8 @@ function preload() {
         img: loadImage("assets/body.png"),
         sound: loadSound("assets/body.mp3"),
         playSound: false,
-        type: "body",
-        order: 1
+        //        type: "body",
+        //        order: 1
 
     });
 
@@ -86,11 +87,11 @@ function preload() {
         distance: 0,
         overlay: false,
         pickedUp: false,
-        img: loadImage("assets/buttons.png"),
+        img: loadImage("assets/buttons.jpg"),
         sound: loadSound("assets/buttons.mp3"),
         playSound: false,
-        type: "button",
-        order: 2
+        //        type: "button",
+        //        order: 2
 
     });
 
@@ -109,8 +110,8 @@ function preload() {
         img: loadImage("assets/face.png"),
         sound: loadSound("assets/face.mp3"),
         playSound: false,
-        type: "head",
-        order: 3
+        //        type: "head",
+        //        order: 3
 
     });
 
@@ -129,8 +130,8 @@ function preload() {
         img: loadImage("assets/eyes.png"),
         sound: loadSound("assets/eyes.mp3"),
         playSound: false,
-        type: "eyes",
-        order: 4
+        //        type: "eyes",
+        //        order: 4
 
     });
 
@@ -149,8 +150,8 @@ function preload() {
         img: loadImage("assets/glasses.png"),
         sound: loadSound("assets/glasses.mp3"),
         playSound: false,
-        type: "glasses",
-        order: 5
+        //        type: "glasses",
+        //        order: 5
 
     });
 
@@ -169,8 +170,8 @@ function preload() {
         img: loadImage("assets/hat.png"),
         sound: loadSound("assets/hat.mp3"),
         playSound: false,
-        type: "hat",
-        order: 6
+        //        type: "hat",
+        //        order: 6
 
     });
 
@@ -189,8 +190,8 @@ function preload() {
         img: loadImage("assets/nose.png"),
         sound: loadSound("assets/nose.mp3"),
         playSound: false,
-        type: "nose",
-        order: 7
+        //        type: "nose",
+        //        order: 7
 
 
     });
@@ -205,47 +206,49 @@ function preload() {
         sizeW: 79,
         sizeH: 52,
         distance: 0,
-        type: "neck",
+        //        type: "neck",
         overlay: false,
         pickedUp: false,
         img: loadImage("assets/ribbon.png"),
         sound: loadSound("assets/ribbon.mp3"),
         playSound: false,
-        order: 8
+        //        order: 8
     });
 
 
-        gameObjects.push({
-            x: -50,
-            y: -50,
-            offsetX: 900,
-            offsetY: -200,
-            showX: 665,
-            showY: 519,
-            sizeW: 127,
-            sizeH: 127,
-            distance: 0,
-            type: "neck",
-            overlay: false,
-            pickedUp: false,
-            img: loadImage("assets/scarf.png"),
-            order: 9,
-            sound: loadSound("assets/scarf.mp3"),
-            playSound: false
-        });
+    //    gameObjects.push({
+    //        x: -50,
+    //        y: -50,
+    //        offsetX: 900,
+    //        offsetY: -200,
+    //        showX: 665,
+    //        showY: 519,
+    //        sizeW: 127,
+    //        sizeH: 127,
+    //        distance: 0,
+    //        //        type: "neck",
+    //        overlay: false,
+    //        pickedUp: false,
+    //        img: loadImage("assets/scarf.png"),
+    //        //        order: 9
+    //        //            sound: loadSound("assets/scarf.mp3"),
+    //        //            playSound: false
+    //    });
 
 
-    soundFiles.push({
-        sound: loadSound("assets/goodJob.mp3"),
-        pSound: false
-
-    });
-
-    soundFiles.push({
-        sound: loadSound("assets/congrats.mp3"),
-        pSound: false
-
-    });
+//        soundFiles.push({
+//            sound: loadSound("assets/goodJob.mp3"),
+//            pSound: false
+//    
+//        });
+//    
+//        soundFiles.push({
+//            sound: loadSound("assets/congrats.mp3"),
+//            pSound: false
+//    
+//        });
+    
+    
 
 }
 
@@ -259,8 +262,11 @@ function setup() {
     }
 
     bgMusic.setVolume(0.1);
-    bgMusic.play();
+//    bgMusic.play();
+    bgMusic.loop();
 
+    snow = createSprite(700, 450, 300, 700);
+    snow.addAnimation("floating", "assets/snowman001.png","assets/snowman011.png");
 
 }
 
@@ -271,7 +277,9 @@ function draw() {
     image(bgImage, posX, posY, 2700, 1800);
 
 
+    
 
+    
 
     for (var g = 0; g < b.length; g++) {
         b[g].move();
@@ -297,7 +305,7 @@ function draw() {
 
         var curDist = dist(gameObjects[i].x + gameObjects[i].offsetX, gameObjects[i].y + gameObjects[i].offsetY, 400, 300);
 
-        if (curDist <= 20 && gameObjects[i].overlay == false) {
+        if (curDist <= 20  && gameObjects[i].overlay == false && collected < 8) {
 
             //looks for type in snowman array 
             //everything picked up before lost as well
@@ -318,13 +326,13 @@ function draw() {
             gameObjects[i].pickedUp = true;
 
 
-//            collected++;
+            collected++;
 
 
 
 
 
-            snowman[gameObjects[i].type] = gameObjects[i];
+            //            snowman[gameObjects[i].type] = gameObjects[i];
 
 
         }
@@ -335,65 +343,84 @@ function draw() {
 
 
 
-//    for (var i = 0; i < gameObjects.length; i++) {
-//
-//        if (gameObjects[i].overlay == true) {
-//            image(gameObjects[i].img, gameObjects[i].showX, gameObjects[i].showY, gameObjects[i].sizeW, gameObjects[i].sizeH);
-//
-//            if (gameObjects[i].playSound == false) {
-//                gameObjects[i].sound.play();
-//                gameObjects[i].playSound = true;
-//            }
-//        }
-//
-//        if (collected == 4) {
-//            if (soundFiles[0].pSound == false) {
-//                soundFiles[0].sound.play();
-//                soundFiles[0].pSound = true;
-//            }
-//        }
-//
-//        if (collected == 8) {
-//            if (soundFiles[1].pSound == false) {
-//                soundFiles[1].sound.play();
-//                soundFiles[1].pSound = true;
-//            }
-//        }
-//    }
+    for (var i = 0; i < gameObjects.length; i++) {
+
+        if (gameObjects[i].overlay == true) {
+            image(gameObjects[i].img, gameObjects[i].showX, gameObjects[i].showY, gameObjects[i].sizeW, gameObjects[i].sizeH);
+
+            if (gameObjects[i].playSound == false) {
+                gameObjects[i].sound.play();
+                gameObjects[i].playSound = true;
+
+
+            }
+
+        }
+
+
+    }
+    
+    
+    
+    fill(230);
+    ellipse(400, 300, 20, 20);
+    
+    
+    for (var i = 0; i < gameObjects.length; i++) {
+    if (collected == 8) {
+        
+        gameObjects[i].overlay = false;
+        
+        snow.attractionPoint(.1, 400, 300);
+        snow.maxSpeed = 4;
+        drawSprites();
+        
+        textSize(30);
+        textFont("Arial");
+        text("Congratulation! You have found all body parts", 90, 120);
+       
+        
+        
+        
+        }
+        
+    }
 
 
 
     //wrong body part order
-        for (var i in snowman) {
-            if (snowman[i].overlay == true) {
-    
-    
-//                 image(snowman[i].img, snowman[i].showX, snowman[i].showY, snowman[i].sizeW, snowman[i].sizeH);
-    
-    
-    
-                for (var a = 0; a < gameObjects.length; a++) {
-                    
-//                    console.log("a1: " + a);
-                    
-                    if  (a == snowman[i].order) {
-    
-    
-//                        console.log("a2: " + a);
-    
-                        image(snowman[i].img, snowman[i].showX, snowman[i].showY, snowman[i].sizeW, snowman[i].sizeH);
-                    }
-                
-//                    console.log("a3: " + a);
-                }
-    
-    
-                if (snowman[i].playSound == false) {
-                    snowman[i].sound.play();
-                    snowman[i].playSound = true;
-                }
-            }
-        }
+    //    for (var i in snowman) {
+    //        if (snowman[i].overlay == true) {
+    //
+    //
+    //            //                 image(snowman[i].img, snowman[i].showX, snowman[i].showY, snowman[i].sizeW, snowman[i].sizeH);
+    //
+    //
+    //
+    //
+    //
+    //            //                   console.log("a1: " + a);
+    //
+    //
+    //            for (var a = 0; a < gameObjects.length; a++) {
+    //                if (a == snowman[i].order) {
+    //
+    //
+    //                    //                        console.log("a2: " + a);
+    //
+    //                    image(snowman[i].img, snowman[i].showX, snowman[i].showY, snowman[i].sizeW, snowman[i].sizeH);
+    //                }
+    //
+    //                //                    console.log("a3: " + a);
+    //            }
+    //
+    //
+    //            if (snowman[i].playSound == false) {
+    //                snowman[i].sound.play();
+    //                snowman[i].playSound = true;
+    //            }
+    //        }
+    //    }
     //
     //
     //    
@@ -435,8 +462,7 @@ function draw() {
 
 
 
-    fill(230);
-    ellipse(400, 300, 20, 20);
+    
 
     if (keywaspressed == false) {
         textSize(30);
@@ -450,11 +476,6 @@ function draw() {
     //    for (var i = 0; i < gameObjects.length; i++) {
     //            image(gameObjects[i].img, gameObjects[i].showX, gameObjects[i].showY, gameObjects[i].sizeW, gameObjects[i].sizeH);
     //        }
-
-
-    console.log("collected: " + collected);
-
-
 
 
 
