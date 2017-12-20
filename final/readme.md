@@ -15,6 +15,7 @@ There will also be a sound library to load a background music and various audio 
 I will create a snowman with buttons for interaction (changing background, starting snowflake, some sound effect).
 
 ![Snowman Image](img/snowman.jpg)
+
 This project is a small game where the user can use the arrow key on the key board to travel through the map to find different body parts of the snowman.
 
 ### 2. Map game
